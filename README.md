@@ -31,7 +31,10 @@ import (
 
 func main() {
 	qthc.DEBUG = true
-	qt := qthc.NewDefaultQuadTree(2)
+	// 2 dimensions for our sample points.
+	// if 2*dim > DEFAULT_MAX_NODE_SIZE (which is 10), then nodesize = 2 * dim, else it's DEFAULT_MAX_NODE_SIZE.
+	qt := qthc.NewDefaultQuadTree(2) // or NewQuadTree(dim, maxNodeSize int)
+	
 
 	things := [][]float64{
 		[]float64{0, 0},
