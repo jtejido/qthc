@@ -13,6 +13,14 @@ func NewEntry(key []float64, value interface{}) *Entry {
 	return ans
 }
 
+func (e *Entry) Point() []float64 {
+	return e.point
+}
+
+func (e *Entry) Value() interface{} {
+	return e.value
+}
+
 func (e *Entry) enclosed(min, max []float64) bool {
 	return isPointEnclosed(e.point, min, max)
 }
