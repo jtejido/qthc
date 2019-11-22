@@ -7,7 +7,8 @@ MX-quadtree with Hypercube Traversal
 This is an MX-quadtree implementation with configurable maximum depth, maximum nodes size, and
 (if desired) automatic guessing of root rectangle. 
 
-For navigation during queries, it uses the ***inc()*** traversal algorithm as described in: 
+For navigation during queries, it uses the ***inc()*** traversal algorithm as described in:
+
 **T. Zaeschke and M. Norrie, "Efficient Z-Ordered Traversal of Hypercube Indexes,  BTW proceedings, 2017.**
 
 The tree stores an object's center point (as opposed to a rectangle), together with its data, on its nodes.
@@ -46,21 +47,23 @@ func main() {
 	}
 
 	for _, thing := range things {
-		qt.Insert(thing, nil)
+		qt.Insert(thing, nil) // nil data
 	}
 
 	q := qt.SearchIntersect([]float64{2, 1}, []float64{12, 7})
 
 	for q.HasNext() {
-		fmt.Println(q.Next())
+		i := q.Next()
+		fmt.Printf("%v : %v \n", i.Point(), i.Value())
 	}
 
-	// 3, 1
-	// 2, 6
-	// 3, 6
-	// 10, 3
-	// 8, 6
-	// 11, 7
+	// the data is interface{} type
+	// [3 1] : <nil>
+	// [2 6] : <nil>
+	// [3 6] : <nil>
+	// [10 3] : <nil>
+	// [8 6] : <nil>
+	// [11 7] : <nil>
 
 }
 
